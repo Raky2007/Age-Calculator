@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Age Calculator</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Age Calculator</h1>
+            <p id="liveDateTime"></p>
+        </header>
+        <main>
+            <label for="birthdate">Enter your date of birth:</label>
+            <input type="date" id="birthdate" placeholder="DD/MM/YYYY">
+            <button class="calculate-btn" onclick="calculateAge()">Calculate Age</button>
+            <p id="result"></p>
+        </main>
+    </div>
+    <script src="script.js"></script>
+    <script>
+        function updateDateTime() {
+            let now = new Date();
+            let formattedDate = now.toLocaleDateString();
+            let formattedTime = now.toLocaleTimeString();
+            document.getElementById("liveDateTime").innerText = `Date: ${formattedDate} | Time: ${formattedTime}`;
+        }
+        setInterval(updateDateTime, 1000);
+        updateDateTime();
+    </script>
+    <style>
+        /* Animated Black and Gold Background */
+        body {
+            background: linear-gradient(-45deg, #000000, #b8860b, #000000, #b8860b);
+            background-size: 400% 400%;
+            animation: gradientBG 8s ease infinite;
+        }
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        #liveDateTime {
+            font-size: 14px;
+            font-weight: bold;
+            color: #b8860b;
+            margin-top: 10px;
+        }
+        input[type="date"] {
+            font-size: 12px;
+            padding: 4px;
+            width: 150px;
+        }
+    </style>
+</body>
+</html>
